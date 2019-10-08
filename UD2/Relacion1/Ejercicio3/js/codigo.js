@@ -13,6 +13,5 @@ let meses=[
     "Noviembre",
     "Diciembre"
 ];
-for(i=0;i<meses.length;i++){
-    alert(meses[i]);
-}
+//Muestro todos los elementos del array de meses en un alert
+alert(meses);
