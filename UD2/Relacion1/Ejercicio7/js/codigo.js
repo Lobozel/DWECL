@@ -19,6 +19,7 @@ for(i=0;i<10;i++){
 for(i=0;i<vector.length;i++){
     if(vector[i]==menor){
         nuevoV = vector.slice(i);
+        break;
     }
 }
 
