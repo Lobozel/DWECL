@@ -1,5 +1,5 @@
 //Almaceno los 12 meses del año en un array
-var meses=[
+let meses=[
     "Enero",
     "Febrero",
     "Marzo",
