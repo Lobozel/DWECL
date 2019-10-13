@@ -3,6 +3,9 @@ let fecha="06/09/1996";
 let date = new Date();
 let fActual = date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear();
 
+//Descargar moment.js
+// console.log(fActual.diff(fecha,'days'),'dias de diferencia');
+
 //FALTA CALCULAR EDAD
 if(validarFecha(fecha)){
     document.write("La fecha es válida");
@@ -10,7 +13,6 @@ if(validarFecha(fecha)){
     document.write("La fecha NO es válida");
 
 }
-
 
 
 function calcularEdad(fecha){
