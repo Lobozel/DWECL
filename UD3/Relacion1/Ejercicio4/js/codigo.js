@@ -26,33 +26,41 @@ do{
             let num2;
             num = prompt('Ingese la base:');
             num2 = prompt('Ingrese el exponente:');
-            document.write("La solución es "+Math.pow(num,num2));
+            document.write(num+"^"+num2+" = "+Math.pow(num,num2));
         break;
         case "2":
             do{
                 num = prompt('Ingese un número no negativo:');
             }while(num<0);
-            document.write("La raiz cuadrada es "+Math.sqrt(num));
+            document.write("La raiz cuadrada de "+num+" es "+Math.sqrt(num));
         break;
         case "3":
             do{
                 num = prompt('Ingese un número decimal:');
-            }while(num%1!=0);
-            document.write("El entero más cercano (a la alta) es "+Math.round(num));
-            document.write("El entero más cercano (a la baja) es "+Math.floor(num));
+            }while(num%1==0);
+            document.write("El entero más cercano a "+num+" (a la alta) es "+Math.round(num));
+            document.write("<br>");
+            document.write("El entero más cercano a "+num+" (a la baja) es "+Math.floor(num));
         break;
         case "4":
             do{
                 num = prompt('Ingese un ángulo (entre 0 y 360):');
             }while(num<0 || num>360);
-            document.write("El valor de seno es: "+Math.sin(num));
-            document.write("El valor de coseno es: "+Math.con(num));
-            document.write("El valor de la tangente es: "+Math.tan(num));
+            document.write("El valor de seno de "+num+" es: "+Math.sin(num));
+            document.write("<br>");
+            document.write("El valor de coseno de "+num+" es: "+Math.cos(num));
+            document.write("<br>");
+            document.write("El valor de la tangente de "+num+" es: "+Math.tan(num));
         break;
     }
 
-    document.write("<br>");
 
-    op = prompt('Introduzca 1 para volver al menú, u otra cosa para salir.');
+    //Para poder probar todas las opciones del menú sin tener que recargar la página
+    //doy la opción de volver al menú si se introduce 1.
+    var millisecondsToWait = 500;
+    setTimeout(function() {
+        document.write("<br>");
+        op = prompt('Introduzca 1 para volver al menú, u otra cosa para salir.'); 
+    }, millisecondsToWait);
 }while(op==1);
 
