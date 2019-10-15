@@ -1,33 +1,37 @@
-
-let fecha="06/09/1996";
+/*
+Escribe un script el cual contenga una función que sea capaz de calcular
+los años que tiene una persona. A la función debe de pasarse la fecha de
+nacimiento de la persona y devolverá cuántos años tiene.
+*/
+let fecha="1996-09-06";
 let date = new Date();
-let fActual = date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear();
+let fActual = moment(date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate());
 
-//Descargar moment.js
-// console.log(fActual.diff(fecha,'days'),'dias de diferencia');
+do{
 
-//FALTA CALCULAR EDAD
-if(validarFecha(fecha)){
-    document.write("La fecha es válida");
-}else{
-    document.write("La fecha NO es válida");
+	fecha = prompt('Ingresa tu fecha de nacimiento con el formato YYYY-MM-DD:');
 
-}
+	let validacion=validarFecha(fecha);
 
-
-function calcularEdad(fecha){
-
-}
+	if(!validacion){
+		alert("La fecha NO es válida");
+	}else{
+		//La fecha es válida
+		fecha=moment(fecha);
+		//devuelve la edad
+		document.write('Tienes ', fActual.diff(fecha, 'years'), ' años.');
+	}
+}while(!validacion);
 
 function validarFecha(fecha){
-
-    if (fecha.length!=10 || fecha.charAt(2)!='/' || fecha.charAt(5)!='/' ||
-			parseInt(fecha.substring(3, 5))<1 || parseInt(fecha.substring(3, 5))>12 
-			|| parseInt(fecha.substring(0,2))<1 || parseInt(fecha.substring(0,2))>
-			diasMes(parseInt(fecha.substring(3, 5)),parseInt(fecha.substring(6, 10)))){
-                return false;
-            }
-    return true;
+ 
+	if(fecha.length!=10 || fecha.charAt(4)!='-' || fecha.charAt(7)!='-' ||
+	parseInt(fecha.substring(5, 7))<1 || parseInt(fecha.substring(5, 7))>12 //comprobacion mes
+	|| parseInt(fecha.substring(8,10))<1 || parseInt(fecha.substring(8,10))>//comprobacion dias
+	diasMes(parseInt(fecha.substring(5, 7)),parseInt(fecha.substring(0, 4)))){
+		return false;
+	}
+	return true;
 }
 
 function diasMes(mes,anio){
