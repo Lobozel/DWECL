@@ -22,26 +22,26 @@ do{
 
     let num=0;
     switch(op){
-        case 1:
+        case "1":
             let num2;
             num = prompt('Ingese la base:');
             num2 = prompt('Ingrese el exponente:');
             document.write("La solución es "+Math.pow(num,num2));
         break;
-        case 2:
+        case "2":
             do{
                 num = prompt('Ingese un número no negativo:');
             }while(num<0);
             document.write("La raiz cuadrada es "+Math.sqrt(num));
         break;
-        case 3:
+        case "3":
             do{
                 num = prompt('Ingese un número decimal:');
             }while(num%1!=0);
             document.write("El entero más cercano (a la alta) es "+Math.round(num));
             document.write("El entero más cercano (a la baja) es "+Math.floor(num));
         break;
-        case 4:
+        case "4":
             do{
                 num = prompt('Ingese un ángulo (entre 0 y 360):');
             }while(num<0 || num>360);
@@ -51,6 +51,8 @@ do{
         break;
     }
 
+    document.write("<br>");
+
     op = prompt('Introduzca 1 para volver al menú, u otra cosa para salir.');
-}while(op!=1);
+}while(op==1);
 
