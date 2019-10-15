@@ -40,3 +40,23 @@ if(separado.length==4){ //En el caso de que sean 2 nombres y 2 apellidos
 for(i=0,cont=0;i<separado.length;i++){
     document.write(id[i]+" "+separado[i]+"<br>");
 }
+
+document.write("<br>");
+
+//Le quito el segundo nombre, de tenerlo, antes de hacer la propuesta de nombres
+if(separado.length==4){
+    separado.splice(1,1);
+}
+
+let propuesta=separado[0].charAt(0);
+    propuesta+=separado[1];
+    propuesta+=separado[2].charAt(0);
+
+
+document.write("Propuesta de nombre 1: "+propuesta+"<br>");
+
+    propuesta=separado[0].substr(0,3);
+    propuesta+=separado[1].substr(0,2);
+    propuesta+=separado[2].substr(0,2);
+document.write("Propuesta de nombre 2: "+propuesta+"<br>");
+

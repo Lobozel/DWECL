@@ -5,12 +5,15 @@ Debe de mostrar cuánto tiempo tarda en calcular los primeros 60 decimales de PI
 → http://p-nand-q.com/programming/obfuscation/js/index.html 
 */
 
-console.log(CalculatePi(2));
+let inicio = new Date();
+let final;
+let tiempoFinal;
 
 function CalculatePi(NumberOfDigits) {
     this.data = {}
     this.name = ""
     var $ = this; 
+
     this._ = [
         function (x, y) {
             return this._[6](x, this._[9](x) + this._[9](y));
@@ -121,4 +124,17 @@ function CalculatePi(NumberOfDigits) {
     this._[21]([[6, -9, NumberOfDigits], [6, -12, 10], [6, -13, 1], [6, -14, 0], 
                      [6, -15, 3], [14, "leraeal?mlslhstmsr", "csm"], [17, "csm", 
                       "l!sa!ar!easa"], [20, 12, 19], [18, -1, -2]], undefined);
+
 }
+
+// console.log(new CalculatePi(61).name);
+
+for(i=0;i<60;i++){
+    CalculatePi(2);
+    document.write(new Date().getTime()-inicio.getTime()+"<br>");
+}
+
+final = new Date();
+
+tiempoFinal = (final.getTime()-inicio.getTime());
+document.write("<h3>Tiempo final de ejecución: </h3>"+tiempoFinal);
