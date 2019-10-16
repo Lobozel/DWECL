@@ -4,6 +4,7 @@ En el siguiente enlace podemos ver una serie de expresiones regulares las cuales
 */
 
 //La expresión regular de la VISA en el enlace ofrecido es erronea.
+//^4[0-9]{12}(?:[0-9]{3})?$ <-- la buena
 
 let americanExpress="^3[47][0-9]{13}$";
 let dinerClub="^3(?:0[0-5]|[68][0-9])[0-9]{11}$";
