@@ -147,9 +147,14 @@ function CalculatePi(NumberOfDigits) {
 
 // console.log(new CalculatePi(61).name);
 
+let timeEj=0;
+let aux=0;
+
 for (i = 0; i < 60; i++) {
-  CalculatePi(2);
-  document.write(new Date().getTime() - inicio.getTime() + "<br>");
+  CalculatePi((i+2));
+  timeEj=(new Date().getTime() - inicio.getTime());
+  aux=timeEj-aux;
+  document.write(timeEj + "<br>");
 }
 
 final = new Date();
