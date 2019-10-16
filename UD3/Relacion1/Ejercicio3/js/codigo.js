@@ -8,35 +8,28 @@ que debe introducir el usuario son la hora, los minutos, los segundos.
 02:35 PM o 02:35:07 AM (hora con minutos y AM o PM según sea antes o después del medio día).
 */
 
-let hora="20:15:10";
+let hora = "20:15:10";
 let validacion;
 
 validarHora(hora);
 
+do {
+  hora = prompt("Ingresa una hora con el formato HH:MM:SS:");
+  validacion = validarHora(hora);
+} while (!validacion);
 
-do{
-    hora = prompt('Ingresa una hora con el formato HH:MM:SS:');
-    validacion=validarHora(hora);
-}while(!validacion);
-
-document.write("<br>"+hora);
-if(parseInt(hora.substring(0, 2))>12){
-    hora=(parseInt(hora.substring(0, 2))-12)+hora.substring(2,8);
-    document.write("<br>"+hora+" PM");
-}else{
-    document.write("<br>"+hora+" AM");    
+document.write("<br>" + hora);
+if (parseInt(hora.substring(0, 2)) > 12) {
+  hora = parseInt(hora.substring(0, 2)) - 12 + hora.substring(2, 8);
+  document.write("<br>" + hora + " PM");
+} else {
+  document.write("<br>" + hora + " AM");
 }
 
-
-function validarHora(hora){
-
-    if(hora.length!=8 || hora.charAt(2)!=':' || hora.charAt(5)!=':' ||
-	parseInt(hora.substring(0, 2))<0 || parseInt(hora.substring(0, 2))>23 //comprobacion horas
-	|| parseInt(hora.substring(3,5))<0 || parseInt(hora.substring(3,5))>59//comprobacion minutos
-    || parseInt(hora.substring(6,8))<0 || parseInt(hora.substring(6,8))>59)//comprobacion segundos
-    {
-		return false;
-	}
+function validarHora(hora) {
+  if (hora.search("^([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$") != -1) {
     return true;
-    
+  } else {
+    return false;
+  }
 }
