@@ -19,6 +19,7 @@ document.write("<b>[0-9]{13} =></b> 13 caracteres comprendidos entre el rango 0-
 document.write("<b>$ =></b> Final de cadena o, final de línea si el indicador de multiplinea (m) está habilitado.<br>");
 document.write("<br><br>")
 
+//https://regexr.com/
 //TODO
 document.write("Expresión regular para la <b>Diner's Club</b>:  \""+dinerClub+"\"<br>");
 document.write("<b>^3 =></b> El primer caracter sea 3.<br>");
