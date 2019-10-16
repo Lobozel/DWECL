@@ -150,8 +150,8 @@ function CalculatePi(NumberOfDigits) {
 let timeEj=0;
 let aux=0;
 
-for (i = 0; i < 60; i++) {
-  CalculatePi((i+2));
+for (i = 2; i < 62; i++) {
+  CalculatePi((i));
   timeEj=(new Date().getTime() - inicio.getTime());
   aux=timeEj-aux;
   document.write(timeEj + "<br>");
