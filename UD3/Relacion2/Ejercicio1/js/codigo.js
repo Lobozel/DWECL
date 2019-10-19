@@ -9,3 +9,8 @@ function myFunction() {
 }
 </script>
 */
+
+//Busca el elemento con el id "demo" y le cambia su valor por "YOU CLICKED ME!"
+function myFunction() {
+  document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
+}
