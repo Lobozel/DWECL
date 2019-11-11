@@ -40,10 +40,6 @@ jugadores.forEach(function(jugador){
     document.write("<br>");
 });
 
-// for(i = 0; i<jugadores.lenght;i++){
-//     document.write(jugadores[i].toString());
-// }
-
 document.write("<h3 class='text-center'>Reseteo de puntuación del jugador 2:</h3><br>");
 jugador2.resetPts();
 document.write(jugador2.toString());
