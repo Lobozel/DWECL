@@ -1,6 +1,6 @@
 class Jugador {
-    constructor(n, a, e, nv, p){
-        let nombre = n;
+    constructor(nombre, a, e, nv, p){
+        this.nombre = nombre;
         let apellido = a;
         let empleo = e;
         let nivel = nv;
@@ -8,7 +8,7 @@ class Jugador {
 
         this.toString = function(){
             return "<div class='text-center'>"+
-            "<b>Nombre:</b> "+nombre+"<br>"+
+            "<b>Nombre:</b> "+this.nombre+"<br>"+
             "<b>Apellidos:</b> "+apellido+"<br>"+
             "<b>Empleo:</b> "+empleo+"<br>"+
             "<b>Nivel:</b> "+nivel+"<br>"+
