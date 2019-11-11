@@ -1,9 +1,9 @@
 let Jugador = {
-    nombre : 'Jugador 1',
-    apellido: 'Merlin',
-    empleo: 'mago',
-    nivel: '50',
-    puntuacion: '34500',
+    nombre : undefined,
+    apellido: undefined,
+    empleo: undefined,
+    nivel: undefined,
+    puntuacion: undefined,
     init: function(nombre, apellido, empleo, nivel, puntuacion){
         this.nombre=nombre;
         this.apellido=apellido;
