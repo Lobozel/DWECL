@@ -1,9 +1,16 @@
-let jugador1 = {
+let Jugador = {
     nombre : 'Jugador 1',
     apellido: 'Merlin',
     empleo: 'mago',
     nivel: '50',
     puntuacion: '34500',
+    init: function(nombre, apellido, empleo, nivel, puntuacion){
+        this.nombre=nombre;
+        this.apellido=apellido;
+        this.empleo=empleo;
+        this.nivel=nivel;
+        this.puntuacion=puntuacion;
+    ;},
     toString: function() {return "<div class='text-center'>"+
     "<b>Nombre:</b> "+this.nombre+"<br>"+
     "<b>Apellidos:</b> "+this.apellido+"<br>"+
@@ -15,23 +22,12 @@ let jugador1 = {
         this.puntuacion= 0;
     }
 };
-let jugador2 = {
-    nombre : 'Jugador 2',
-    apellido: 'Lobozel',
-    empleo: 'invocador',
-    nivel: '72',
-    puntuacion: '98753',
-    toString: function() {return "<div class='text-center'>"+
-    "<b>Nombre:</b> "+this.nombre+"<br>"+
-    "<b>Apellidos:</b> "+this.apellido+"<br>"+
-    "<b>Empleo:</b> "+this.empleo+"<br>"+
-    "<b>Nivel:</b> "+this.nivel+"<br>"+
-    "<b>Puntuación:</b> "+this.puntuacion+
-    "</div>";},
-    resetPts: function() {
-        this.puntuacion= 0;
-    }
-};
+
+let jugador1 = Object.create(Jugador);
+let jugador2 = Object.create(Jugador);
+
+jugador1.init("Jugador 1","Merlin","mago","50","34500");
+jugador2.init("Jugador 2","Lobozel","invocador","72","98753");
 
 let jugadores = [jugador1, jugador2];
 
