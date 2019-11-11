@@ -9,10 +9,10 @@ class Trabajador{
     }
 
     concentrarse(){
-        return this.nombre+" dedicará el día a concentrarte en tu trabajo.<br><br>";
+        return this.nombre+" dedicará el día a concentrarse en su trabajo.<br><br>";
     }
     viajar(){
-        return this.nombre+" dedicará viajar para relajarte y olvidarte de tu trabajo.<br><br>";
+        return this.nombre+" dedicará viajar para relajarse y olvidarse de su trabajo.<br><br>";
     }
 
 }
