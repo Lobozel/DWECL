@@ -1,25 +1,26 @@
 class Jugador {
-    constructor(nombre, apellido, empleo, nivel, puntuacion){
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.empleo = empleo;
-        this.nivel = nivel;
-        this.puntuacion = puntuacion;
+    constructor(n, a, e, nv, p){
+        let nombre = n;
+        let apellido = a;
+        let empleo = e;
+        let nivel = nv;
+        let puntuacion = p;
+
+        this.toString = function(){
+            return "<div class='text-center'>"+
+            "<b>Nombre:</b> "+nombre+"<br>"+
+            "<b>Apellidos:</b> "+apellido+"<br>"+
+            "<b>Empleo:</b> "+empleo+"<br>"+
+            "<b>Nivel:</b> "+nivel+"<br>"+
+            "<b>Puntuación:</b> "+puntuacion+
+            "</div>";
+        }
+
+        this.resetPts = function() {
+            puntuacion= 0;
+        }
     }
 
-    toString() {        
-        return "<div class='text-center'>"+
-    "<b>Nombre:</b> "+this.nombre+"<br>"+
-    "<b>Apellidos:</b> "+this.apellido+"<br>"+
-    "<b>Empleo:</b> "+this.empleo+"<br>"+
-    "<b>Nivel:</b> "+this.nivel+"<br>"+
-    "<b>Puntuación:</b> "+this.puntuacion+
-    "</div>";
-    }
-
-    resetPts() {
-        this.puntuacion= 0;
-    }
 }
 
 let jugador1 = new Jugador("Jugador 1","Merlin","mago","50","34500");
