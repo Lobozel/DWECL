@@ -24,7 +24,6 @@ function verificar() {
   let dia = document.getElementById("dia");
   let mes = document.getElementById("mes");
   let ano = document.getElementById("ano");
-  let sexo = document.getElementsByName("sexo");
   let checkMayor = document.getElementById("mayor");
   let error = document.getElementById("error");
   let check = document.getElementById("checked");
@@ -75,7 +74,6 @@ function verificar() {
     error.innerHTML = "Debes ser mayor de edad.";
     return;
   }
-
   error.innerHTML="";
 
   if(confirm("¿Quieres enviar esta información?")){
