@@ -1,8 +1,16 @@
-#error{
-    color:red;
-    text-align: center;
+.error {
+  background-color: orange;
+  font-weight: bolder;
 }
-#checked{
-    color:green;
-    text-align: center;
+input[type="range"]::-moz-range-track {
+  padding: 0 10px;
+  background: repeating-linear-gradient(
+    to right,
+    #ccc,
+    #ccc 10%,
+    #000 10%,
+    #000 11%,
+    #ccc 11%,
+    #ccc 20%
+  );
 }

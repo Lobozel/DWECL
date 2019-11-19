@@ -12,21 +12,34 @@
             <tr>
                 <td>Nombre*: </td>
                 <td>
-                <input type="text" name="nombre" id="nombre" />
+                <input type="text" name="nombre" id="nombre" maxlength="15" pattern="[A-Za-z]{2,15}" title="Introduce entre 2 y 15 letras" required/>
                 </td>
              </tr>
             <tr>
                 <td>Edad*: </td>
                 <td>
-                    <input type="number" name="edad" id="edad" />
+                    <input type="number" name="edad" id="edad" min='18' max='100' required />
                 </td>
             </tr>
 
             <tr>
                 <td>Telefono*: </td>
                 <td>
-                    <input type="text" name="telefono" id="telefono" />
+                    <input type="text" name="telefono" id="telefono" pattern="[0-9]{9}" title="Número de 9 cifras" required />
                 </td>
+            </tr>
+            <tr>
+                <td>Ejercicio 2.6</td>
+                <td>
+                    <input type="range" id="number_range" min="1" max="100" step="5" value="50" list="number">
+                    <label id="number_input"></label>
+                </td>
+                <tr>
+                    <td></td>
+                    <td>
+                        <p>Aún que el máximo esta establecido como 100, solo llega a 96 porque el paso es de 5 en 5 y empieza en 1.</p>
+                    </td>
+                </tr>
             </tr>
         </table>
         <p>
