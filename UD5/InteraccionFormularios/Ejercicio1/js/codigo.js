@@ -86,7 +86,7 @@ function verificar() {
   check.innerHTML += "<br>Formulario enviado con éxito";
 
   error.innerHTML="";
-  limpiar(name, tel, dia, mes, ano, checkMayor, error);
+  limpiar(name, tel, dia, mes, ano, checkMayor);
 }
 
 function limpiadoInicial(check, name, tel, dia, mes, ano) {
@@ -98,8 +98,7 @@ function limpiadoInicial(check, name, tel, dia, mes, ano) {
   ano.className = "normal";
 }
 
-function limpiar(name, tel, dia, mes, ano, sexo, checkMayor, error) {
-//   error.innerHTML = "";
+function limpiar(name, tel, dia, mes, ano, sexo, checkMayor) {
   name.value = "";
   tel.value = "";
   dia.value = "";
