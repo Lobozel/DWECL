@@ -1,0 +1,14 @@
+#error{
+    color:red;
+    text-align: center;
+}
+#checked{
+    color:green;
+    text-align: center;
+}
+.invalido {
+    border-color: red;
+}
+.normal {
+    border-color: black;
+}

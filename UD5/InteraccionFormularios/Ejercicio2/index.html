@@ -1,0 +1,39 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <title>VALIDACIÓN DE FORMULARIOS CON HTML5</title>
+    <script src="js/codigo.js"></script>
+</head>
+<body>
+    <h1>Formulario</h1>
+    <form action="" method="post" id="miFormulario">
+        <table>
+            <tr>
+                <td>Nombre*: </td>
+                <td>
+                <input type="text" name="nombre" id="nombre" />
+                </td>
+             </tr>
+            <tr>
+                <td>Edad*: </td>
+                <td>
+                    <input type="number" name="edad" id="edad" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>Telefono*: </td>
+                <td>
+                    <input type="text" name="telefono" id="telefono" />
+                </td>
+            </tr>
+        </table>
+        <p>
+            <input type="submit" value="Enviar" id="enviar" />
+            <input type="reset" value="Borrar" id="borrar" />
+        </p>
+      <p id="mensajeError"></p>
+    </form>
+</body>
+</html>
