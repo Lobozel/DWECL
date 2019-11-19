@@ -1,0 +1,25 @@
+.comentario {
+  color: green;
+}
+
+.negrita {
+  font-weight: bolder;
+}
+
+.center {
+  text-align: center;
+}
+
+.invalido {
+  border-color: red;
+}
+
+.valido {
+  border-color: green;
+}
+
+#box {
+  border: black solid 1px;
+  width: 100px;
+  height: 100px;
+}
