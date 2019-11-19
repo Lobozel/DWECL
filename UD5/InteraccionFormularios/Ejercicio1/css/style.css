@@ -9,6 +9,9 @@
 .invalido {
     border-color: red;
 }
+.invalido::before{
+    content: "Error";
+}
 .normal {
     border-color: black;
 }

@@ -71,20 +71,14 @@ function verificar() {
     return;
   }
 
+  if(!checkMayor.checked){
+    error.innerHTML = "Debes ser mayor de edad.";
+    return;
+  }
+
   error.innerHTML="";
 
   if(confirm("¿Quieres enviar esta información?")){
-    if (sexo[0].checked) {
-        check.innerHTML = "¡Eres un hombre";
-      } else {
-        check.innerHTML = "¡Eres una mujer";
-      }
-    
-      if (checkMayor.checked) {
-        check.innerHTML += " mayor de edad!";
-      } else {
-        check.innerHTML += " menor de edad!";
-      }
     
       check.innerHTML += "<br>Formulario enviado con éxito";
     
