@@ -71,22 +71,26 @@ function verificar() {
     return;
   }
 
-  if (sexo[0].checked) {
-    check.innerHTML = "¡Eres un hombre";
-  } else {
-    check.innerHTML = "¡Eres una mujer";
-  }
-
-  if (checkMayor.checked) {
-    check.innerHTML += " mayor de edad!";
-  } else {
-    check.innerHTML += " menor de edad!";
-  }
-
-  check.innerHTML += "<br>Formulario enviado con éxito";
-
   error.innerHTML="";
-  limpiar(name, tel, dia, mes, ano, checkMayor);
+
+  if(confirm("¿Quieres enviar esta información?")){
+    if (sexo[0].checked) {
+        check.innerHTML = "¡Eres un hombre";
+      } else {
+        check.innerHTML = "¡Eres una mujer";
+      }
+    
+      if (checkMayor.checked) {
+        check.innerHTML += " mayor de edad!";
+      } else {
+        check.innerHTML += " menor de edad!";
+      }
+    
+      check.innerHTML += "<br>Formulario enviado con éxito";
+    
+      limpiar(name, tel, dia, mes, ano, checkMayor);
+  }
+  
 }
 
 function limpiadoInicial(check, name, tel, dia, mes, ano) {
