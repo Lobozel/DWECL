@@ -85,6 +85,7 @@ function verificar() {
 
   check.innerHTML += "<br>Formulario enviado con éxito";
 
+  error.innerHTML="";
   limpiar(name, tel, dia, mes, ano, checkMayor, error);
 }
 
@@ -98,6 +99,7 @@ function limpiadoInicial(check, name, tel, dia, mes, ano) {
 }
 
 function limpiar(name, tel, dia, mes, ano, sexo, checkMayor, error) {
+//   error.innerHTML = "";
   name.value = "";
   tel.value = "";
   dia.value = "";
@@ -106,7 +108,6 @@ function limpiar(name, tel, dia, mes, ano, sexo, checkMayor, error) {
   sexo[0].checked = true;
   sexo[1].checked = false;
   checkMayor.checked = false;
-  error.innerHTML = "";
 }
 
 function diasMes(mes, anio) {
