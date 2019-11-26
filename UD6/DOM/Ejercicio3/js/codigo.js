@@ -12,7 +12,7 @@ window.onload = function() {
         getTable().rows[i].onclick = function(){
             limpiarBordes();
             selectStyle(this);
-            selected=i-1;
+            selected=this.rowIndex;            
 
             getFirstName().value = this.cells[0].innerHTML;
             getLastName().value = this.cells[1].innerHTML;
