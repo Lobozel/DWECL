@@ -1,7 +1,9 @@
 //Declaración de promesas
-let p1 = new Promise((resolve, reject) => { setTimeout(resolve, 1000, "Promesa 1"); });
-let p2 = new Promise((resolve, reject) => { setTimeout(resolve, 3000, "Promesa 2"); });
-let p3 = new Promise((resolve, reject) => { setTimeout(resolve, 2000, "Promesa 3"); });
+let p1 = Promise.resolve(3);
+let p2 = 1337;
+let p3 = new Promise((resolve, reject) => {
+  setTimeout(resolve, 100, "Promesa");
+}); 
 
 /*
 Espera que terminen todas y ejecuta todas las promesas que se le pasan por argumento
