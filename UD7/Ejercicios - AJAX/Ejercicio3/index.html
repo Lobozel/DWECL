@@ -1,20 +1,64 @@
 <!DOCTYPE html>
-<html lang="es">
+ 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ejercicio3</title>
+<meta charset="utf-8">
+<script>
+if (window.XMLHttpRequest) {
+httpRequest = new XMLHttpRequest();
+} else if (window.ActiveXObject) {
+httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+} else {
+console.error("Error: Aquest navegador no admet AJAX.");
+}
+ 
+httpRequest.onload = processarResposta;
+httpRequest.open('GET', 'http://dades.eicub.net/api/1/festivals-assistents?Any=2015&format=json.xml', true)
+httpRequest.overrideMimeType('text/plain');
+httpRequest.send(null);
+ 
+function processarResposta() {
+var resposta = JSON.parse(httpRequest.responseText);
+var llista = document.createElement('ul');
+console.log(resposta);
+ 
+for (var i = 0; i < resposta.length; i++) {
+ 
+var item = processarDada(resposta[i]);
+llista.appendChild(item);
+}
+ 
+document.body.appendChild(llista);
+}
+ 
+function processarDada(dada) {
+var item = document.createElement('li');
+var enllac = document.createElement('a');
+/*
+El fallo era que el nombre de la etiqueta donde se encuentra el nombre del festival
+se llama Nom_activitat, pero en el código se ha confundido y se ha puesto NomDelFestival
+si en la sentencia siguiente cambiamos dada.NomDelFestival por dada.Nom_activitat lo solucionaremos
+
+He encontrado la solución de la siguiente manera:
+*Dado que el problema es que no escribe los datos por pantalla, he buscado que sentencia deberia ocuparse de ello.
+*El nombre de la etiqueta que estaba intentando escribir esta declarada como NomDelFestival, lo que me ha hecho sospechar
+que debia cambiar esto por el verdadero nombre de la etiqueta festival (es decir, que hubiese habido alguna confusión)
+*He mirado el console.log(resposta) que viene en el código, en él he buscado como se llama el nombre del festival
+y he encontrado que la etiqueta se llama Nom_activitat.
+*He realizado el cambio en el código y he comprobado si pasaba algo en el servidor
+
+*/
+enllac.textContent = dada.Nom_activitat;
+if (dada.Web) {
+enllac.setAttribute('href', dada.Web);
+}
+enllac.setAttribute('title', dada.Organitzador);
+item.appendChild(enllac);
+ 
+return item;
+}
+</script>
 </head>
+ 
 <body>
-
-    <noscript>
-            <p>Bienvenido a Mi Sitio</p>
-            <p>La página que estás viendo requiere para su funcionamiento el
-            uso de JavaScript. Si lo has deshabilitado intencionadamente,
-            por favor vuelve a activarlo.</p>
-          </noscript>
-
-    <script src="js/codigo.js"></script>
+<h1>Festivals 2015</h1>
 </body>
-</html>
