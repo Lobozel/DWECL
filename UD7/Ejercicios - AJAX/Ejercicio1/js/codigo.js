@@ -14,8 +14,9 @@ function cargarAlumnos(){
 }
 
 function cargarXML(xml){
+    document.getElementById('cargaAlumnos').style.display='none';
     let docXML = xml.responseXML;
-    let tabla  = "<tr><th>Nombre</th><th>Apellidos</th><th>Nota</th></tr>";
+    let tabla  = "<tr><th>Nombre</th><th>Apellidos</th><th>Nota</th><th>Convocatoria</th></tr>";
     let alumnos = docXML.getElementsByTagName("alumno");
     for(let i=0;i<alumnos.length;i++){
         tabla+="<tr><td>";
@@ -23,7 +24,10 @@ function cargarXML(xml){
         tabla+="</td><td>";
         tabla+=alumnos[i].getElementsByTagName("apellido")[0].textContent;
         tabla+="</td><td>";
-        tabla+=alumnos[i].getElementsByTagName("nota")[0].textContent;
+        nota=alumnos[i].getElementsByTagName("nota")[0];
+        tabla+=nota.textContent;
+        tabla+="</td><td>";
+        tabla+=nota.getAttribute("convocatoria");
         tabla+="</td></tr>";
     }
     document.getElementById('table-alumnos').innerHTML=tabla;
