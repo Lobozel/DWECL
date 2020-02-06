@@ -49,6 +49,11 @@ function error(elem, txt) {
   
   //Borro todos los mensajes de error para evitar duplicados
   function limpiarMensajes() {
+    let nombre = document.getElementById("nombre");
+    let email = document.getElementById('email');
+    email.setCustomValidity("");
+    nombre.setCustomValidity("");
+
     let errores = document.getElementById("errores");    
 
     for (var i = 0; i < errores.children.length; i++) {
