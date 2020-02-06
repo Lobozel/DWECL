@@ -1,7 +1,5 @@
 const indexedDB = window.indexedDB;
 
-console.log();
-
 let nombre = document.getElementById("nombre");
 let apellido = document.getElementById("apellido");
 let edad = document.getElementById("edad");
