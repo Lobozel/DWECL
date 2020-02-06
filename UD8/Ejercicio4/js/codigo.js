@@ -39,7 +39,12 @@ if (indexedDB) {
     btnIterar2.addEventListener("click", iterar2);
 
     function leerBD() {
+        if(nombre.value==""){
+            alert("El campo nombre no puede estar vacio.");
+            return;
+        }
       findData("objectStore1");
+      limpiarCeldas();
     }
 
     function iterar1() {
@@ -52,16 +57,26 @@ if (indexedDB) {
     }
 
     function actualizarValorBD1(){
+        if(nombre.value=="" || apellido.value=="" || edad.value==""){
+            alert("Los campos nombre, apellido y edad no pueden estar vacios");
+            return;
+        }
         const data = {
             Nombre: nombre.value,
             Apellidos: apellido.value,
             Edad: edad.value
           };
         updateData(data, "objectStore1");
+        limpiarCeldas();
     }
 
     function borrarValorBD1(){
+        if(nombre.value==""){
+            alert("El campo nombre no puede estar vacio.");
+            return;
+        }
         deleteData("objectStore1");
+        limpiarCeldas();
     }
   };
 
@@ -210,6 +225,10 @@ if (indexedDB) {
   };
 
   function anadirItemBD(objectStore) {
+    if(nombre.value=="" || apellido.value=="" || edad.value==""){
+        alert("Los campos nombre, apellido y edad no pueden estar vacios");
+        return;
+    }
     const data = {
       Nombre: nombre.value,
       Apellidos: apellido.value,
