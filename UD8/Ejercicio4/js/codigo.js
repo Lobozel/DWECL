@@ -33,7 +33,7 @@ if (indexedDB) {
     console.log("OPEN", db);
 
     btnLeerBD.addEventListener("click", leerBD);
-    // btnActualizarValorBD1.addEventListener('click',actualizarValorBD1);
+    btnActualizarValorBD1.addEventListener('click',actualizarValorBD1);
     // btnBorrarValorBD1.addEventListener('click',borrarValorBD1);
     btnIterar1.addEventListener("click", iterar1);
     btnIterar2.addEventListener("click", iterar2);
@@ -43,11 +43,21 @@ if (indexedDB) {
     }
 
     function iterar1() {
+        textArea1.innerHTML="";
       readData("objectStore1");
     }
 
     function iterar2() {
       readDataBetweenTwoValues("objectStore2", valor1.value, valor2.value);
+    }
+
+    function actualizarValorBD1(){
+        const data = {
+            Nombre: nombre.value,
+            Apellidos: apellido.value,
+            Edad: edad.value
+          };
+        updateData(data, "objectStore1");
     }
   };
 
@@ -105,6 +115,50 @@ if (indexedDB) {
     };
   };
 
+  const deleteData = (data, storeName) => {
+    const transaction = db.transaction([storeName], "readwrite");
+    const objectStore = transaction.objectStore(storeName);
+    let request = objectStore.openCursor();
+
+    request.onsuccess = e => {
+      const cursor = e.target.result;
+      if (cursor) {
+          
+          
+        if (cursor.value.Nombre == nombre.value) {
+          key=cursor.key;
+          request = objectStore.put(data,key);
+        } else {
+          cursor.continue();
+        }
+      }
+    //   alert("No se ha encontrado el elemento a eliminar");
+    };
+
+  };
+
+  const updateData = (data, storeName) => {
+    const transaction = db.transaction([storeName], "readwrite");
+    const objectStore = transaction.objectStore(storeName);
+    let request = objectStore.openCursor();
+
+    request.onsuccess = e => {
+      const cursor = e.target.result;
+      if (cursor) {
+          
+          
+        if (cursor.value.Nombre == nombre.value) {
+          key=cursor.key;
+          request = objectStore.put(data,key);
+        } else {
+          cursor.continue();
+        }
+      }
+    //   alert("No se ha encontrado el elemento a modificar");
+    };
+
+  };
+
   const findData = storeName => {
     const transaction = db.transaction([storeName], "readonly");
     const objectStore = transaction.objectStore(storeName);
@@ -149,6 +203,7 @@ if (indexedDB) {
           cursor.continue();
         }
       }
+    //   alert("No se ha encontrado el elemento");
     };
   };
 
