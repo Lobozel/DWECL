@@ -34,7 +34,7 @@ if (indexedDB) {
 
     btnLeerBD.addEventListener("click", leerBD);
     btnActualizarValorBD1.addEventListener('click',actualizarValorBD1);
-    // btnBorrarValorBD1.addEventListener('click',borrarValorBD1);
+    btnBorrarValorBD1.addEventListener('click',borrarValorBD1);
     btnIterar1.addEventListener("click", iterar1);
     btnIterar2.addEventListener("click", iterar2);
 
@@ -58,6 +58,10 @@ if (indexedDB) {
             Edad: edad.value
           };
         updateData(data, "objectStore1");
+    }
+
+    function borrarValorBD1(){
+        deleteData("objectStore1");
     }
   };
 
@@ -115,7 +119,7 @@ if (indexedDB) {
     };
   };
 
-  const deleteData = (data, storeName) => {
+  const deleteData = storeName => {
     const transaction = db.transaction([storeName], "readwrite");
     const objectStore = transaction.objectStore(storeName);
     let request = objectStore.openCursor();
@@ -123,11 +127,9 @@ if (indexedDB) {
     request.onsuccess = e => {
       const cursor = e.target.result;
       if (cursor) {
-          
-          
         if (cursor.value.Nombre == nombre.value) {
           key=cursor.key;
-          request = objectStore.put(data,key);
+          request = objectStore.delete(key);
         } else {
           cursor.continue();
         }
