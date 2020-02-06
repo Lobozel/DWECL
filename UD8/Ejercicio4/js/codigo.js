@@ -1,5 +1,8 @@
 const indexedDB = window.indexedDB;
 
+console.log();
+
+
 let nombre = document.getElementById("nombre");
 let apellido = document.getElementById("apellido");
 let edad = document.getElementById("edad");
@@ -25,15 +28,23 @@ if (indexedDB) {
   btnAnadirItemBD2.addEventListener("click", function() {
     anadirItemBD("objectStore2");
   });
-  // btnLeerBD.addEventListener('click',leerBD);
+
+
+  request.onsuccess = () => {
+    db = request.result;
+    console.log("OPEN", db);
+
+    readData("objectStore1");
+
+      btnLeerBD.addEventListener('click',leerBD);
   // btnActualizarValorBD1.addEventListener('click',actualizarValorBD1);
   // btnBorrarValorBD1.addEventListener('click',borrarValorBD1);
   // btnIterar1.addEventListener('click',iterar1);
   // btnIterar2.addEventListener('click',iterar2);
 
-  request.onsuccess = () => {
-    db = request.result;
-    console.log("OPEN", db);
+    function leerBD(){
+        findData("objectStore1");
+    }
   };
 
   request.onupgradeneeded = () => {
@@ -50,6 +61,52 @@ if (indexedDB) {
     const transaction = db.transaction([storeName], 'readwrite');
     const objectStore = transaction.objectStore(storeName);
     const request = objectStore.add(data);
+  };
+
+  const readData = (storeName) => {
+    const transaction = db.transaction([storeName], 'readonly');
+    const objectStore = transaction.objectStore(storeName);
+    const request = objectStore.openCursor();
+
+    request.onsuccess = (e) =>{
+        const cursor = e.target.result;
+        if(cursor){
+                cursor.continue();
+        }
+    }
+  };
+
+  const findData = (storeName) => {
+    const transaction = db.transaction([storeName], 'readonly');
+    const objectStore = transaction.objectStore(storeName);
+    const request = objectStore.openCursor();
+
+    request.onsuccess = (e) =>{
+        const cursor = e.target.result;
+        if(cursor){
+            if(cursor.value.Nombre==nombre.value){
+                /*En chrome no se carga bien el dialog, funciona pero se ve feo y transparente
+                por ello, primero detecto si estoy usando chrome, y si es así, muestro la información
+                en un sencillo alert.
+                */
+                if(navigator.userAgent.toLowerCase().indexOf('chrome') > -1){
+                    alert("Nombre: "+cursor.value.Nombre+","+
+                    "Apellidos: "+cursor.value.Apellidos+","+
+                    "Edad: "+cursor.value.Edad);
+                }else{
+                    $(function(){
+                        $("#dialog").attr("title",cursor.value.Nombre);
+                        $("#dialog").text("Nombre: "+cursor.value.Nombre+","+
+                        "Apellidos: "+cursor.value.Apellidos+","+
+                        "Edad: "+cursor.value.Edad);
+                        $("#dialog").dialog();
+                    });
+                }                
+            }else{
+                cursor.continue();
+            }
+        }
+    }
   };
 
   function anadirItemBD(objectStore) {
