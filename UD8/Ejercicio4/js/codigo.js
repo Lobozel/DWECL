@@ -36,7 +36,7 @@ if (indexedDB) {
     // btnActualizarValorBD1.addEventListener('click',actualizarValorBD1);
     // btnBorrarValorBD1.addEventListener('click',borrarValorBD1);
     btnIterar1.addEventListener("click", iterar1);
-    // btnIterar2.addEventListener('click',iterar2);
+    btnIterar2.addEventListener("click", iterar2);
 
     function leerBD() {
       findData("objectStore1");
@@ -44,6 +44,10 @@ if (indexedDB) {
 
     function iterar1() {
       readData("objectStore1");
+    }
+
+    function iterar2() {
+      readDataBetweenTwoValues("objectStore2", valor1.value, valor2.value);
     }
   };
 
@@ -77,7 +81,25 @@ if (indexedDB) {
       if (cursor) {
         textArea1.innerHTML += "Nombre: " + cursor.value.Nombre + "\n";
         textArea1.innerHTML += "Apellidos: " + cursor.value.Apellidos + "\n";
-        textArea1.innerHTML += "Edad: " + cursor.value.Edad + "\n";
+        textArea1.innerHTML += "Edad: " + cursor.value.Edad + "\n\n";
+        cursor.continue();
+      }
+    };
+  };
+
+  const readDataBetweenTwoValues = (storeName, val1, val2) => {
+    const transaction = db.transaction([storeName], "readonly");
+    const objectStore = transaction.objectStore(storeName);
+    const request = objectStore.openCursor();
+
+    request.onsuccess = e => {
+      const cursor = e.target.result;
+      if (cursor) {
+        if (cursor.key >= val1 && cursor.key <= val2) {
+          textArea2.innerHTML += "Nombre: " + cursor.value.Nombre + "\n";
+          textArea2.innerHTML += "Apellidos: " + cursor.value.Apellidos + "\n";
+          textArea2.innerHTML += "Edad: " + cursor.value.Edad + "\n\n";
+        }
         cursor.continue();
       }
     };
