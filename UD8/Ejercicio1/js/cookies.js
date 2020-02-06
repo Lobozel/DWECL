@@ -29,7 +29,7 @@ window.onload=function(){
     });
 }
 
-let cname='time';
+const cname='time';
 let mensaje = document.getElementById('msg');
 
 /*
