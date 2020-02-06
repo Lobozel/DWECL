@@ -1,26 +1,97 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <!--Muestra un título para la página en la pestaña de esta-->
     <title>Ejercicio2</title>
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!---->
+    <div class="container mt-3 bg-warning border border-dark">
+      <form id="miFormulario">
+        <div class="form-group">
+          <label for="user">Usuario</label>
+          <input
+            type="text"
+            class="form-control"
+            id="user"
+            placeholder="Nombre de usuario"
+            pattern="[A-Za-z0-9]{6,15}"
+            title="Carácteres válidos: a-z, A-Z, 0-9. Tamaño mayor de 6 y menor que 15."
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Introduce tu email"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            title="email válido"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="pass">Contraseña</label>
+          <input
+            type="password"
+            class="form-control"
+            id="pass"
+            placeholder="Contraseña"
+            pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+            title="Mayúsculas, minúsculas, números, carácteres especiales y mínimo 8 carácteres"
+            required
+          />
+        </div>
+        <button id='enviar' type="submit" class="btn btn-primary">Enviar</button>
+      </form>
+      <br />
+    </div>
+    <div class="container mt-3 bg-success border border-dark">
+      <form class="mt-3">
+        <div class="form-inline">
+          <label for="valorCookie">Fallos</label>
+          <input
+            type="text"
+            class="form-control mx-sm-3"
+            id="valorCookie"
+            value=""
+            readonly
+          />
+          <button id='removeCookies' type="submit" class="btn btn-danger">Borrar Cookies</button>
+        </div>
+        <div class="form-group mt-3">
+        <label for="name">Recargue la página para actualizar los fallos</label>
+          <button id='reload' type="button" class="btn btn-info">Recargar</button>
+        </div>
+      </form>
+    </div>
+    <!---->
 
     <!--Solo se ejecuta en el caso de que el navegador tenga JavaScript desactivado,
     muestra una advertencia respecto a esto y le pide al usuario que active manualmente
     JavaScript-->
     <noscript>
-            <p>Bienvenido a Mi Sitio</p>
-            <p>La página que estás viendo requiere para su funcionamiento el
-            uso de JavaScript. Si lo has deshabilitado intencionadamente,
-            por favor vuelve a activarlo.</p>
-          </noscript>
-          <script src="http://momentjs.com/downloads/moment.min.js"></script>
+      <p>Bienvenido a Mi Sitio</p>
+      <p>
+        La página que estás viendo requiere para su funcionamiento el uso de
+        JavaScript. Si lo has deshabilitado intencionadamente, por favor vuelve
+        a activarlo.
+      </p>
+    </noscript>
+    <script src="http://momentjs.com/downloads/moment.min.js"></script>
 
     <!--Ejecuta las sentencias contenidas en el archivo externo de javascript-->
     <script src="js/codigo.js"></script>
-</body>
+  </body>
 </html>
