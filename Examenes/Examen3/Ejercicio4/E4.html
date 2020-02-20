@@ -26,7 +26,6 @@
 
 	<script>
 
-
         let lista; 
         let nuevaTarea;
         let db;  //Guardará una referencia a la base de datos creada.
@@ -45,6 +44,31 @@
            
         }
 
+        const request = indexedDB.open('listTasks',1);
+
+        request.onsuccess = () => {
+            db = request.result;
+            console.log("OPEN",db);
+            
+        }
+
+        request.onupgradeneeded = () => {
+            db = request.result;
+            const tareas = db.createObjectStore("tasks",{
+                autoIncrement: true
+            });
+        }
+
+        request.onerror = error => {
+            console.log("Error",error);
+        }
+
+        const addData = data => {
+        const transaction = db.transaction('tasks', "readwrite");
+        const objectStore = transaction.objectStore('tasks');
+        const request = objectStore.add(data);
+        }
+
 
         function anadirTarea(){
             //Objeto que utilizaremos:
@@ -53,7 +77,10 @@
             };
             
             todo.title = nuevaTarea.value;
-                  
+
+            addData(todo);
+            nuevaTarea.value="";
+            pintarLista();
         }
         
 
@@ -63,14 +90,22 @@
             //Borrando contenido
             lista.innerHTML ="";
 
-
             //En algún momento se debe llamar para pintar cada tarea en la lista:
-            pintarUnaTarea(cursor.value);
+            const transaction = db.transaction('tasks', "readonly");
+            const objectStore = transaction.objectStore('tasks');
+            const request = objectStore.openCursor();
+            request.onsuccess = e => {
+                const cursor = e.target.result;
+                if(cursor) {
+                    pintarUnaTarea(cursor.value);
+                    cursor.continue();
+                }
+            }
                  
         }
 
         //Se encarga de pintar cada una de las tareas:
-        function pintarUnaTarea(todo){
+        function pintarUnaTarea(todo){    
             lista.innerHTML = lista.innerHTML  + `<li><span><i class="fa fa-trash"></i></span>${todo.title}</li>`;
         }
 
@@ -78,7 +113,10 @@
         //Deja la tabla vacía pero no elimina la tabla.
         function borrarLista()
         {
-            
+            const transaction = db.transaction('tasks', "readwrite");
+            const objectStore = transaction.objectStore('tasks');
+            const request = objectStore.clear();
+            pintarLista();
         }
         
         
