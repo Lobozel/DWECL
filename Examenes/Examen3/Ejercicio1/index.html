@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const doSomething = (cb) => {
+            let a = Math.random() * 10;
+            if (a < 5) {
+                cb(new Error('Número es demasiado pequeño'));
+                return;
+            }
+            cb(null, a);
+        };
+
+        function callback(error, data) {
+            if (error) {
+                throw error;
+            }
+            console.log("Nuestro dato es: ", data);
+        }
+
+        doSomething(callback);
+    </script>
+
+</body>
+
+</html>

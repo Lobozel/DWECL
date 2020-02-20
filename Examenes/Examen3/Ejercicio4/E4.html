@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Todo List</title>
+	<link rel="stylesheet" type="text/css" href="todos.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+	<div id="container">
+		<h1>Lista de tareas<i id="botonAnadir" class="fa fa-plus" aria-hidden="true"></i></h1>
+		<input id="nuevaTarea" type="text" placeholder="Añade nueva tarea">
+
+		<ul id="lista">
+            <!-- Estos 3 elementos son solo de prueba, se deberán de borrar: -->
+			<li><span><i class="fa fa-trash"></i></span> Hacer la cama</li>
+			<li><span><i class="fa fa-trash"></i></span> Lavarme los dientes</li>
+			<li><span><i class="fa fa-trash"></i></span> Estudiar JS hasta morir</li>
+        </ul>
+        
+    </div>
+    <div id="borrarLista" class="button_cont" align="center">
+        <a class="example_b">Borrar Lista</a>
+    </div>
+
+	<script>
+
+
+        let lista; 
+        let nuevaTarea;
+        let db;  //Guardará una referencia a la base de datos creada.
+
+        
+        window.onload = iniciar;
+        
+        function iniciar(){
+
+             lista = document.getElementById("lista");
+             nuevaTarea = document.getElementById("nuevaTarea");
+
+             document.getElementById("botonAnadir").addEventListener("click", anadirTarea);
+             document.getElementById("borrarLista").addEventListener("click", borrarLista);
+
+           
+        }
+
+
+        function anadirTarea(){
+            //Objeto que utilizaremos:
+            let todo = {
+                descripción: "Comer con la boca cerrada"
+            };
+            
+            todo.title = nuevaTarea.value;
+                  
+        }
+        
+
+        //Pinta toda la lista (primero borra todo lo que hay)
+        //Hace uso del método pintarUnaTarea(...)
+        function pintarLista(){
+            //Borrando contenido
+            lista.innerHTML ="";
+
+
+            //En algún momento se debe llamar para pintar cada tarea en la lista:
+            pintarUnaTarea(cursor.value);
+                 
+        }
+
+        //Se encarga de pintar cada una de las tareas:
+        function pintarUnaTarea(todo){
+            lista.innerHTML = lista.innerHTML  + `<li><span><i class="fa fa-trash"></i></span>${todo.title}</li>`;
+        }
+
+        //Borra todos los elementos que hay tanto en la lista como en la base de datos.
+        //Deja la tabla vacía pero no elimina la tabla.
+        function borrarLista()
+        {
+            
+        }
+        
+        
+    </script>
+</body>
+</html>
+    
+    
