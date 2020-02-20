@@ -9,23 +9,40 @@
 
 <body>
     <script>
-        const doSomething = (cb) => {
-            let a = Math.random() * 10;
-            if (a < 5) {
-                cb(new Error('Número es demasiado pequeño'));
-                return;
-            }
-            cb(null, a);
-        };
+        // const doSomething = (cb) => {
+        //     let a = Math.random() * 10;
+        //     if (a < 5) {
+        //         cb(new Error('Número es demasiado pequeño'));
+        //         return;
+        //     }
+        //     cb(null, a);
+        // };
 
-        function callback(error, data) {
-            if (error) {
-                throw error;
-            }
-            console.log("Nuestro dato es: ", data);
+        // function callback(error, data) {
+        //     if (error) {
+        //         throw error;
+        //     }
+        //     console.log("Nuestro dato es: ", data);
+        // }
+
+        // doSomething(callback);
+
+        const doSomething = () => {
+        let a = Math.random() * 10;
+        p = new Promise((resolve, reject) => {
+        if(num < 5) {
+            reject(new Error('Número es demasiado pequeño'))
+        } else {
+            resolve(<abbr title=""></abbr>)
+        }
+        })
+        return p;
         }
 
-        doSomething(callback);
+        doSomething()
+        .then(result => console.log(result))
+        .catch(error => console.log(error));
+        
     </script>
 
 </body>
