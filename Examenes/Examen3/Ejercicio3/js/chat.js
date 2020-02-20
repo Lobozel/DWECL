@@ -67,5 +67,7 @@ function write(){
 
 function reset(){
     localStorage.setItem('chat',"");
+    localStorage.removeItem('user1');
+    localStorage.removeItem('user2');
     write();
 }
