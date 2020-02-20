@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indexed DB</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        .contenido {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .controler {
+            display: flex;
+        }
+        #term{
+            padding: 2vh;
+            height: 80vh;
+            width: 50vw;
+            overflow: scroll;
+        }
+        .mensaje{
+            border-radius: 5px;
+            width: auto;
+            margin-top: 1vh;
+            padding: 1vh;
+        }
+        .usu1 {
+            border: solid lightgray;
+        }
+        .usu2 {
+            border: solid lightgreen;
+        }
+        .mensaje span{
+            display: flex;
+            justify-content: right;
+            font-size: small;
+            margin: 1vh;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="contenido">
+        <div id="term">
+            
+        </div>
+        <div id="controler">
+            <input type="text" class="form form-control" id="usu1">
+            <input type="text" class="form form-control" id="usu2">
+        </div>
+    </div>
+    <script src="indexedDb.js"></script>
+</body>
+</html>
